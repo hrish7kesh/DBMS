@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Criminal Records</title>
+</head>
+<body>
+  <h1>Criminal List</h1>
+  <ul id="criminals"></ul>
+
+  <script>
+    fetch('http://localhost:5000/criminals')
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById('criminals');
+        data.forEach(criminal => {
+          const item = document.createElement('li');
+          item.textContent = JSON.stringify(criminal);
+          list.appendChild(item);
+        });
+      });
+  </script>
+</body>
+</html>
